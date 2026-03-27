@@ -1,0 +1,53 @@
+#  Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*.so
+
+#  Virtual Environment
+venv/
+env/
+.venv/
+
+#  Environment Variables
+.env
+.env.*
+!.env.example
+
+#  Pytest
+.pytest_cache/
+.cache/
+
+#  Playwright
+playwright-report/
+test-results/
+
+#  Reports
+reports/
+allure-results/
+allure-report/
+
+#  Logs
+*.log
+
+#  OS Files
+.DS_Store
+Thumbs.db
+
+#  IDE / Editor
+.vscode/
+.idea/
+
+#  Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+#  Node (if ever used with Playwright tools)
+node_modules/
+
+#  Temporary files
+*.tmp
+*.temp
