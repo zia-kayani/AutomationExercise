@@ -5,6 +5,19 @@ API_BASE_URL = Config.API_BASE_URL
 HEADERS = {"Content-Type": "application/x-www-form-urlencoded"}
 
 class UserClient:
+
+    #Create user client method
     def create_new_user(self, payload: dict):
         response = requests.post(f"{API_BASE_URL}/createAccount", data=payload, headers=HEADERS)
+        return response
+    
+    #Get user details method
+    def get_user_details(self, user_email:str):
+        PARAMS = {"email": user_email}
+        response = requests.get(f"{API_BASE_URL}/getUserDetailByEmail", params=PARAMS)
+        return response
+    
+    #Update user 
+    def update_user_details(self, payload: dict):
+        response = requests.put(f"{API_BASE_URL}/updateAccount", data=payload, headers=HEADERS)
         return response
