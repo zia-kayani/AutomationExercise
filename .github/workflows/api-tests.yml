@@ -1,0 +1,42 @@
+name: API Tests
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+env:
+  ENV: staging
+  BASE_URL: ${{secrets.BASE_URL}}
+  API_BASE_URL: ${{secrets.API_BASE_URL}}
+
+jobs:
+  smoke-tests:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    env:
+      ENV: staging
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - run: pip install -r requirements.txt
+      - run: pytest tests/api -m smoke -v
+
+  regression-tests:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    env:
+      ENV: staging
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - run: pip install -r requirements.txt
+      - run: pytest tests/api -m regression -v

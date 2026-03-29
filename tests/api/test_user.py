@@ -2,6 +2,7 @@ import pytest
 
 #test api endpoint to create new user
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_create_new_user(user_service, new_user_payload):
     
@@ -13,6 +14,7 @@ def test_create_new_user(user_service, new_user_payload):
 
 #test api endpoint to get user details by email
 @pytest.mark.smoke 
+@pytest.mark.regression
 @pytest.mark.api
 def test_get_user_details(user_service, user_email):
     response_json = user_service.get_user_details(user_email)
@@ -28,6 +30,7 @@ def test_get_user_details(user_service, user_email):
 
 #test api endpoint to update user details
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_update_user_details(user_service, update_user_detail):
 
@@ -37,6 +40,7 @@ def test_update_user_details(user_service, update_user_detail):
 
 #test api endpoint to login user with valid data
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_login_user_with_valid_data(user_service, user_factory):
     payload =  user_factory("email", "password")
@@ -46,6 +50,7 @@ def test_login_user_with_valid_data(user_service, user_factory):
 
 #test api endpoint to login user with invalid data
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_login_user_with_invalid_data(user_service, user_factory):
     payload = user_factory(email="test@gmail.com", password="wrongpassword")
@@ -55,6 +60,7 @@ def test_login_user_with_invalid_data(user_service, user_factory):
 
 #test api endpoint to login user without email
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_login_user_without_email(user_service, user_factory):
     payload = user_factory("password") # Only include email and password, using defaults for password 
@@ -63,7 +69,8 @@ def test_login_user_without_email(user_service, user_factory):
     assert response_json["message"] == "Bad request, email or password parameter is missing in POST request.", f"Expected message 'Bad request, email or password parameter is missing in POST request.' for login without email, got {response_json['message']}"
 
 #test api endpoint to login user with delete method
-@pytest.mark.api   
+@pytest.mark.api  
+@pytest.mark.regression
 def test_login_user_with_delete_method(user_service):
     response_json = user_service.login_user_with_delete_method()
     assert response_json["responseCode"] == 405, f"Expected response code 405 for delete method on login, got {response_json['responseCode']}"
@@ -71,6 +78,7 @@ def test_login_user_with_delete_method(user_service):
 
 #test delete user api endpoint
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.api
 def test_delete_user(user_service, user_factory):
     payload = user_factory("email", "password") 
