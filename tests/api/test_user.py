@@ -33,3 +33,45 @@ def test_update_user_details(user_service, update_user_detail):
     response = user_service.update_user_details(update_user_detail)
     assert response["responseCode"] == 200, f"Expected response code 200, got {response['responseCode']}"
     assert response["message"] == "User updated!", f"Expected message 'User updated!',  got {response['message']}"
+
+#test api endpoint to login user with valid data
+@pytest.mark.smoke
+@pytest.mark.api
+def test_login_user_with_valid_data(user_service, user_factory):
+    payload =  user_factory("email", "password")
+    response_json =  user_service.login_user_with_valid_data(payload)
+    assert response_json["responseCode"] == 200, f"Expected response code 200, got {response_json['responseCode']}"
+    assert response_json["message"] == "User exists!", f"Expected message 'User exists!', got {response_json['message']}"
+
+#test api endpoint to login user with invalid data
+@pytest.mark.smoke
+@pytest.mark.api
+def test_login_user_with_invalid_data(user_service, user_factory):
+    payload = user_factory(email="test@gmail.com", password="wrongpassword")
+    response_json = user_service.login_user_with_invalid_data(payload)
+    assert response_json["responseCode"] == 404, f"Expected response code 404   for invalid login, got {response_json['responseCode']}"
+    assert response_json["message"] == "User not found!", f"Expected message 'User not found!' for invalid login, got {response_json['message']}"
+
+#test api endpoint to login user without email
+@pytest.mark.smoke
+@pytest.mark.api
+def test_login_user_without_email(user_service, user_factory):
+    payload = user_factory("password") # Only include email and password, using defaults for password 
+    response_json = user_service.login_user_without_email(payload)
+    assert response_json["responseCode"] == 400, f"Expected response code 400 for login without email, got {response_json['responseCode']}"
+    assert response_json["message"] == "Bad request, email or password parameter is missing in POST request.", f"Expected message 'Bad request, email or password parameter is missing in POST request.' for login without email, got {response_json['message']}"
+
+#test api endpoint to login user with delete method
+@pytest.mark.api   
+def test_login_user_with_delete_method(user_service):
+    response_json = user_service.login_user_with_delete_method()
+    assert response_json["responseCode"] == 405, f"Expected response code 405 for delete method on login, got {response_json['responseCode']}"
+    assert response_json["message"] == "This request method is not supported.", f"Expected message 'This request method is not supported.' for delete method on login, got {response_json['message']}"
+
+# in test methods we can utlitlze factory function like this accoring to our needs
+# payload = user_factory("email", "password") # only email and password will be included in the payload, rest of the fields will be default
+# payload = user_factory() # all fields will be included in the payload with default values
+# payload = user_factory("email", "password", name="Custom Name") # email and password will be included with default values, but name will be overridden with "Custom Name"
+#payload = user_factory(name="Custom Name", email="custom email", password="custom password") # all fields will be included but name, email and password will be overridden with custom values
+
+

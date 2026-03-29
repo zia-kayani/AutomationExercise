@@ -71,30 +71,36 @@ def update_user_detail(user_name_email_password):
         }
         return payload
     
-# factory fixture for the different api scenarios
+# factory fixture for the different login API scenarios
 @pytest.fixture
 def user_factory():
-        def _user_login(**overrides):
-             return {
-                    "name": name,
-                    "email": email,
-                    "password": password,
-                    "title": "Mr",
-                    "birth_date": "11",
-                    "birth_month": "06",
-                    "birth_year": "2002",
-                    "firstname": "Test",
-                    "lastname": "User",
-                    "company": "btk",
-                    "address1": "askari",
-                    "address2": "lahore",
-                    "country": "pakistan",
-                    "zipcode": "9999",
-                    "state": "punjab",
-                    "city": "lahore",
-                    "mobile_number": "999"
-                    **overrides
-             }
+        def _user_login(*fields,**overrides):
+            data =  {
+                "name": name,
+                "email": email,
+                "password": password,
+                "title": "Mr",
+                "birth_date": "11",
+                "birth_month": "06",
+                "birth_year": "2002",
+                "firstname": "Test",
+                "lastname": "User",
+                "company": "btk",
+                "address1": "askari",
+                "address2": "lahore",
+                "country": "pakistan",
+                "zipcode": "9999",
+                "state": "punjab",
+                "city": "lahore",
+                "mobile_number": "999"
+                # **overrides
+            }
+            #keep only required fields in the payload if specified
+            if fields:
+                data = {k: data[k] for k in fields }
+            data.update(overrides)
+            return data
+        
         return _user_login
      
 

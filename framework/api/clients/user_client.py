@@ -21,3 +21,23 @@ class UserClient:
     def update_user_details(self, payload: dict):
         response = requests.put(f"{API_BASE_URL}/updateAccount", data=payload, headers=HEADERS)
         return response
+    
+    #login user with valid data
+    def login_user_with_valid_data(self, payload: dict):
+        response = requests.post(f"{API_BASE_URL}/verifyLogin", data=payload, headers=HEADERS)
+        return response
+    
+    #login user with invalid 
+    def login_user_with_invalid_data(self, payload: dict):
+        response = requests.post(f"{API_BASE_URL}/verifyLogin", data=payload, headers=HEADERS)
+        return response
+    
+    #login user with withou email 
+    def login_user_without_email(self, payload:dict):
+        response = requests.post(f"{API_BASE_URL}/verifyLogin", data=payload, headers=HEADERS)
+        return response
+
+    #login user with delete method
+    def login_user_with_delete_method(self):
+        response = requests.delete(f"{API_BASE_URL}/verifyLogin")
+        return response
