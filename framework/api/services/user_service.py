@@ -65,5 +65,12 @@ class UserService:
             raise Exception(f"Expected method not allowed for delete login. Response: {data}")
         return data
 
+    #delete user service method 
+    def delete_user_service(self, payload: dict):
+        response = self.user_client.delete_user(payload)
+        data = response.json()
+        if data.get("responseCode") != 200:
+            raise Exception(f"Failed to delete user. Response: {data}")
+        return data
     
     

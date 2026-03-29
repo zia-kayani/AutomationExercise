@@ -68,6 +68,15 @@ def test_login_user_with_delete_method(user_service):
     assert response_json["responseCode"] == 405, f"Expected response code 405 for delete method on login, got {response_json['responseCode']}"
     assert response_json["message"] == "This request method is not supported.", f"Expected message 'This request method is not supported.' for delete method on login, got {response_json['message']}"
 
+#test delete user api endpoint
+@pytest.mark.smoke
+@pytest.mark.api
+def test_delete_user(user_service, user_factory):
+    payload = user_factory("email", "password") 
+    response_json = user_service.delete_user_service(payload)
+    assert response_json["responseCode"] == 200, f"Expected response code 200 for successful user deletion, got {response_json['responseCode']}"
+    assert response_json["message"] == "Account deleted!", f"Expected message 'User deleted!' for successful user deletion, got {response_json['message']}"
+
 # in test methods we can utlitlze factory function like this accoring to our needs
 # payload = user_factory("email", "password") # only email and password will be included in the payload, rest of the fields will be default
 # payload = user_factory() # all fields will be included in the payload with default values
