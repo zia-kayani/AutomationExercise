@@ -41,3 +41,8 @@ class UserClient:
     def login_user_with_delete_method(self):
         response = requests.delete(f"{API_BASE_URL}/verifyLogin")
         return response
+    
+    #test delete user method
+    def delete_user(self, payload: dict):
+        response = requests.delete(f"{API_BASE_URL}/deleteAccount", data=payload, headers=HEADERS)
+        return response
