@@ -1,5 +1,6 @@
 import pytest
 
+#test api endpoint to create new user
 @pytest.mark.smoke
 @pytest.mark.api
 def test_create_new_user(user_service, new_user_payload):
