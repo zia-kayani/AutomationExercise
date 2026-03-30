@@ -1,3 +1,4 @@
+from framework.api.services.product_service import ProductService
 from framework.api.services.user_service import UserService
 import pytest
 from faker import Faker
@@ -108,3 +109,8 @@ def user_factory():
 @pytest.fixture
 def user_service():
     return UserService()
+
+# ---------- product related fixtures -----------
+@pytest.fixture
+def product_service():
+    return ProductService()
