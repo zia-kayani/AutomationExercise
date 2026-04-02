@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "c9757708-7800-4696-80af-c0313a65b64d",
+    "name": "products",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22695958",
+    "_collection_link": "https://go.postman.co/collection/22695958-c9757708-7800-4696-80af-c0313a65b64d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get all products list",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to all products list",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all brands list",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put to all brands list",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to search a product",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "search_product",
+              "value": "jean",
+              "type": "text",
+              "uuid": "328adfe2-6118-4043-968a-ceec6c992886"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to search a product without search_product parameter",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "",
+              "value": "",
+              "type": "text",
+              "uuid": "328adfe2-6118-4043-968a-ceec6c992886",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

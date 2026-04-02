@@ -1,0 +1,718 @@
+{
+  "info": {
+    "_postman_id": "9a51af2e-7683-4e77-89c6-cda381f054a3",
+    "name": "User",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22695958",
+    "_collection_link": "https://go.postman.co/collection/22695958-9a51af2e-7683-4e77-89c6-cda381f054a3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "zia",
+              "type": "text",
+              "uuid": "eb2d6bee-27ee-440b-bdf6-9ec0904913b9"
+            },
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "d21160e3-2777-41e7-9af5-ac3c3183b3b2"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "500336e9-afb4-4082-81c6-e06d1b04abc1"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "eb644973-e93d-4c28-b9d1-eb4db2b1c31b"
+            },
+            {
+              "key": "birth_date",
+              "value": "11",
+              "type": "text",
+              "uuid": "4f0529cb-fdf1-485e-8d47-1bc7f61ede23"
+            },
+            {
+              "key": "birth_month",
+              "value": "06",
+              "type": "text",
+              "uuid": "a476d7bd-6859-4b3b-bba0-9bf727d8c1e8"
+            },
+            {
+              "key": "birth_year",
+              "value": "2002",
+              "type": "text",
+              "uuid": "4d6a8c9e-e338-4c9c-a8c0-1ce3fc713506"
+            },
+            {
+              "key": "firstname",
+              "value": "zia",
+              "type": "text",
+              "uuid": "5c8a7578-f3a9-4222-89c6-1f0d3033fd2a"
+            },
+            {
+              "key": "lastname",
+              "value": "kayani",
+              "type": "text",
+              "uuid": "0ca21447-4f6e-41cd-9a18-e4cbf0f17fb2"
+            },
+            {
+              "key": "company",
+              "value": "btk",
+              "type": "text",
+              "uuid": "c97f7f64-0bc0-45a1-ba9b-866f099c7887"
+            },
+            {
+              "key": "address1",
+              "value": "askari",
+              "type": "text",
+              "uuid": "9e672d47-affc-4644-b627-deac739c78cf"
+            },
+            {
+              "key": "address2",
+              "value": "lahore",
+              "type": "text",
+              "uuid": "04317a40-b126-4879-9595-7032cb79dd63"
+            },
+            {
+              "key": "country",
+              "value": "pakistan",
+              "type": "text",
+              "uuid": "61aba467-6188-4fce-aee8-f403a943764c"
+            },
+            {
+              "key": "zipcode",
+              "value": "9999",
+              "type": "text",
+              "uuid": "306d8b81-094f-4b55-abd4-37953e8ac6c2"
+            },
+            {
+              "key": "state",
+              "value": "punjab",
+              "type": "text",
+              "uuid": "52dd755f-901a-4efe-8cb5-b9a8256d4e1b"
+            },
+            {
+              "key": "city",
+              "value": "lahore",
+              "type": "text",
+              "uuid": "4530f326-dec1-4a2d-80b8-b7f5d918d385"
+            },
+            {
+              "key": "mobile_number",
+              "value": "999",
+              "type": "text",
+              "uuid": "e4512866-f54d-4728-aa8a-8cab28e10777"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "zia",
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "disabled": true
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "disabled": true
+            },
+            {
+              "key": "birth_date",
+              "value": "11",
+              "disabled": true
+            },
+            {
+              "key": "birth_month",
+              "value": "06",
+              "disabled": true
+            },
+            {
+              "key": "brith_year",
+              "value": "2002",
+              "disabled": true
+            },
+            {
+              "key": "first_name",
+              "value": "zia",
+              "disabled": true
+            },
+            {
+              "key": "last_name",
+              "value": "kayani",
+              "disabled": true
+            },
+            {
+              "key": "company",
+              "value": "bitknox",
+              "disabled": true
+            },
+            {
+              "key": "address1",
+              "value": "askari",
+              "disabled": true
+            },
+            {
+              "key": "address2",
+              "value": "lahore",
+              "disabled": true
+            },
+            {
+              "key": "country",
+              "value": "pakistan",
+              "disabled": true
+            },
+            {
+              "key": "zipcode",
+              "value": "555",
+              "disabled": true
+            },
+            {
+              "key": "state",
+              "value": "punjab",
+              "disabled": true
+            },
+            {
+              "key": "city",
+              "value": "lahore",
+              "disabled": true
+            },
+            {
+              "key": "mobile_number",
+              "value": "1111",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update user",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "zia kayani",
+              "type": "text",
+              "uuid": "eb2d6bee-27ee-440b-bdf6-9ec0904913b9"
+            },
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "d21160e3-2777-41e7-9af5-ac3c3183b3b2"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "500336e9-afb4-4082-81c6-e06d1b04abc1"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "eb644973-e93d-4c28-b9d1-eb4db2b1c31b"
+            },
+            {
+              "key": "birth_date",
+              "value": "11",
+              "type": "text",
+              "uuid": "4f0529cb-fdf1-485e-8d47-1bc7f61ede23"
+            },
+            {
+              "key": "birth_month",
+              "value": "06",
+              "type": "text",
+              "uuid": "a476d7bd-6859-4b3b-bba0-9bf727d8c1e8"
+            },
+            {
+              "key": "birth_year",
+              "value": "2002",
+              "type": "text",
+              "uuid": "4d6a8c9e-e338-4c9c-a8c0-1ce3fc713506"
+            },
+            {
+              "key": "firstname",
+              "value": "zia",
+              "type": "text",
+              "uuid": "5c8a7578-f3a9-4222-89c6-1f0d3033fd2a"
+            },
+            {
+              "key": "lastname",
+              "value": "kayani",
+              "type": "text",
+              "uuid": "0ca21447-4f6e-41cd-9a18-e4cbf0f17fb2"
+            },
+            {
+              "key": "company",
+              "value": "btk",
+              "type": "text",
+              "uuid": "c97f7f64-0bc0-45a1-ba9b-866f099c7887"
+            },
+            {
+              "key": "address1",
+              "value": "askari 11",
+              "type": "text",
+              "uuid": "9e672d47-affc-4644-b627-deac739c78cf"
+            },
+            {
+              "key": "address2",
+              "value": "lahore",
+              "type": "text",
+              "uuid": "04317a40-b126-4879-9595-7032cb79dd63"
+            },
+            {
+              "key": "country",
+              "value": "pakistan",
+              "type": "text",
+              "uuid": "61aba467-6188-4fce-aee8-f403a943764c"
+            },
+            {
+              "key": "zipcode",
+              "value": "9999",
+              "type": "text",
+              "uuid": "306d8b81-094f-4b55-abd4-37953e8ac6c2"
+            },
+            {
+              "key": "state",
+              "value": "punjab",
+              "type": "text",
+              "uuid": "52dd755f-901a-4efe-8cb5-b9a8256d4e1b"
+            },
+            {
+              "key": "city",
+              "value": "lahore",
+              "type": "text",
+              "uuid": "4530f326-dec1-4a2d-80b8-b7f5d918d385"
+            },
+            {
+              "key": "mobile_number",
+              "value": "999",
+              "type": "text",
+              "uuid": "e4512866-f54d-4728-aa8a-8cab28e10777"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/updateAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "updateAccount"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "zia kayani",
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "disabled": true
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "disabled": true
+            },
+            {
+              "key": "birth_date",
+              "value": "11",
+              "disabled": true
+            },
+            {
+              "key": "birth_month",
+              "value": "06",
+              "disabled": true
+            },
+            {
+              "key": "brith_year",
+              "value": "2002",
+              "disabled": true
+            },
+            {
+              "key": "first_name",
+              "value": "zia",
+              "disabled": true
+            },
+            {
+              "key": "last_name",
+              "value": "kayani",
+              "disabled": true
+            },
+            {
+              "key": "company",
+              "value": "bitknox",
+              "disabled": true
+            },
+            {
+              "key": "address1",
+              "value": "askari 11",
+              "disabled": true
+            },
+            {
+              "key": "address2",
+              "value": "lahore",
+              "disabled": true
+            },
+            {
+              "key": "country",
+              "value": "pakistan",
+              "disabled": true
+            },
+            {
+              "key": "zipcode",
+              "value": "555",
+              "disabled": true
+            },
+            {
+              "key": "state",
+              "value": "punjab",
+              "disabled": true
+            },
+            {
+              "key": "city",
+              "value": "lahore",
+              "disabled": true
+            },
+            {
+              "key": "mobile_number",
+              "value": "1111",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login with valid data",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete user account",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/deleteAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "deleteAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login with invalid data",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login without email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete to verify login",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get user details by email",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text",
+              "uuid": "0583bea0-78ef-4be5-8f45-3af562adf369",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "text",
+              "uuid": "f193d72a-450f-439d-ac9c-adf2c2db229a",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/getUserDetailByEmail?email=zia@gmail.com",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "getUserDetailByEmail"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "zia@gmail.com",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
