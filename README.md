@@ -151,6 +151,7 @@ pytest -m regression
 ### Generate report
 
 ```bash
+#for API 
 pytest --alluredir=reports/allure
 allure serve reports/allure
 ```
@@ -244,6 +245,7 @@ This is a personal portfolio project, but suggestions and improvements are welco
 ## 📬 Contact
 
 For queries or collaboration, feel free to reach out.
+ziakayani.official@gmail.com
 
 ---
 

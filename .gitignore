@@ -51,3 +51,9 @@ node_modules/
 #  Temporary files
 *.tmp
 *.temp
+
+
+#allure reports
+api-results/
+ui-results/ 
+performance-results/
