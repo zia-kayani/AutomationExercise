@@ -156,6 +156,12 @@ pytest --alluredir=reports/allure
 allure serve reports/allure
 ```
 
+all the allure reports results will be served here at these paths:
+ * API --  https://zia-kayani.github.io/AutomationExercise/api
+ * UI -- https://zia-kayani.github.io/AutomationExercise/ui
+ * Performance -- https://zia-kayani.github.io/AutomationExercise/performance
+
+
 ### Features:
 
 * Test execution summary
@@ -174,6 +180,16 @@ Implemented using GitHub Actions.
 * ✅ API tests on push
 * ✅ UI tests on pull request
 * ✅ Automated reporting
+
+
+### Github pages for reports:
+
+
+all the allure reports results will be served here at these paths:
+ * APIs report --  https://zia-kayani.github.io/AutomationExercise/api
+ * UI reports -- https://zia-kayani.github.io/AutomationExercise/ui
+ * Performance reports -- https://zia-kayani.github.io/AutomationExercise/performance
+
 
 ### Benefits:
 
