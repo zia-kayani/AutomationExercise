@@ -34,10 +34,57 @@ jobs:
     env:
       ENV: staging
 
+    # steps:
+    #   - uses: actions/checkout@v3
+    #   - uses: actions/setup-python@v4
+    #     with:
+    #       python-version: 3.11
+    #   - run: pip install -r requirements.txt
+    #   - run: pytest tests/api -m regression -v --alluredir=reports/allure/api/api-results
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - run: pip install -r requirements.txt
-      - run: pytest tests/api -m regression -v
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      #  Install Allure CLI
+      - name: Install Allure
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre
+          wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+          tar -zxvf allure-2.24.0.tgz
+          sudo mv allure-2.24.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+
+      #  Run regression tests
+      - name: Run API Regression Tests
+        run: |
+          pytest tests/api -m regression --alluredir=reports/allure/api/api-results
+
+      # Generate Allure Report
+      - name: Generate Allure Report
+        run: |
+          allure generate reports/allure/api/api-results -o reports/allure/api/api-report --clean
+
+      #  Upload artifact 
+      - name: Upload Allure Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-allure-report
+          path: reports/allure/api/api-report
+
+      #  Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/allure/api/api-report
+          destination_dir: api    
