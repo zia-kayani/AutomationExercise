@@ -34,13 +34,6 @@ jobs:
     env:
       ENV: staging
 
-    # steps:
-    #   - uses: actions/checkout@v3
-    #   - uses: actions/setup-python@v4
-    #     with:
-    #       python-version: 3.11
-    #   - run: pip install -r requirements.txt
-    #   - run: pytest tests/api -m regression -v --alluredir=reports/allure/api/api-results
 
     steps:
       - name: Checkout
