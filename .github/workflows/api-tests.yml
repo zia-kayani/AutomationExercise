@@ -1,4 +1,4 @@
-name: API Tests
+name: API Tests in CICD environment 
 
 on:
   pull_request:
