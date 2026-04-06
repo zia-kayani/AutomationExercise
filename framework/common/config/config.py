@@ -3,13 +3,11 @@ from pathlib import Path
 import os
 
 # Set BASE_DIR to project root
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # adjust according to your folder depth
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  
 
 def load_env():
-    # Only take one ENV value, default to "local"
     env = os.getenv("ENV", "local")
 
-    # Use absolute paths so .env is always found
     if env == "staging":
         load_dotenv(BASE_DIR / ".env.staging")
     elif env == "prod":
