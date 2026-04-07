@@ -11,6 +11,7 @@ def test_user_registration(page, user_data):
     flow.continue_after_signup()
     assert flow.auth_page.logout_link.is_visible(), "Logout link not visible, registration might have failed"
     assert flow.auth_page.delete_account_link.is_visible(), "Delete Account link not visible, registration might have failed"
+
     flow.delete_account()
+
     # flow.logout()
-    
