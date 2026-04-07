@@ -108,7 +108,6 @@ class AuthPage:
     @property
     def delete_account_link(self):
         return loc.DELETE_ACCOUNT_LINK(self.page)
-    
 
     # -------- Actions --------
 
@@ -153,4 +152,3 @@ class AuthPage:
 
     def delete_account(self):
         self.delete_account_link.click()
-
