@@ -7,11 +7,19 @@ class AuthPage:
 
     def __init__(self, page):
         self.page = page
+    
+    #------------------------------------------ Properties ------------------------------------------
 
-    # -------- Properties (Locators) --------
+    # --------Common  Properties for Signup/Login    --------
     @property
     def signup_login_link(self):
         return loc.SIGNUP_LOGIN_LINK(self.page)
+    
+    @property
+    def home_link(self):
+        return loc.HOME_lINK(self.page)
+    
+    # -------- Properties for Signup --------
 
     @property
     def name_input(self):
@@ -108,13 +116,49 @@ class AuthPage:
     @property
     def delete_account_link(self):
         return loc.DELETE_ACCOUNT_LINK(self.page)
+    
+    # -------- Properties for Login --------
 
-    # -------- Actions --------
+    @property
+    def login_heading(self):
+        return loc.LOGIN_TO_HEADING(self.page)
+    
+    @property
+    def login_email_input(self):
+        return loc.LOGIN_EMAIL_INPUT(self.page)
+    
+    @property
+    def login_password_input(self):
+        return loc.LOGIN_PASSWORD_INPUT(self.page)
+    
+    @property
+    def login_button(self):
+        return loc.LOGIN_BUTTON(self.page)
+    
+    @property
+    def logged_in_as(self):
+        return loc.LOGGED_IN_AS(self.page)
+    
+    @property
+    def delete_account_link_after_login(self):
+        return loc.DELETE_ACCOUNT_LINK(self.page)
+    
+    @property
+    def account_deleted_text(self):
+        return loc.ACCOUNT_DELETED_TEXT(self.page)
+    
+    #-------------------------------------Actions-------------------------------------
+
+    # --------Common Actions --------
+    def home_page_link(self):
+        return self.home_link.is_visible()
+    
 
     def go_to_signup_login(self):
         self.signup_login_link.click()
         self.name_input.wait_for(state="visible")
 
+    #   ------ Actions for Signup --------
     def signup(self, name: str, email: str):
         self.name_input.fill(name)
         self.email_input.fill(email)
@@ -152,3 +196,29 @@ class AuthPage:
 
     def delete_account(self):
         self.delete_account_link.click()
+
+    # -------- Actions for Login --------
+    def login_heading_visible(self):
+        return self.login_heading.is_visible()
+    
+    def enter_login_email(self, email):
+        self.login_email_input.fill(email)
+
+    def enter_login_password(self, password):
+        self.login_password_input.fill(password)
+
+    def click_login_button(self):
+        self.login_button.click()
+
+    def logged_in_as_visible(self):
+        return self.logged_in_as.is_visible()
+    
+    def delete_account_after_login(self):
+        self.delete_account_link_after_login.click()
+
+    def account_deleted_text_visible(self):
+        return self.account_deleted_text.is_visible()
+    
+    
+
+    

@@ -2,15 +2,18 @@
 
 class AuthLocators:
 
-    # -------- Common --------
+    #  -------------------------------------Common locators-------------------------------------
+    HOME_lINK = lambda page: page.get_by_role("link", name=" Home")
     SIGNUP_LOGIN_LINK = lambda page: page.get_by_role("link", name="Signup / Login")
 
-    # -------- Signup (Homepage) --------
+    # -------------------------------------Signup locators-------------------------------------
+
+    #  Signup (Homepage) 
     NAME_INPUT = lambda page: page.locator('[data-qa="signup-name"]')
     EMAIL_INPUT = lambda page: page.locator('[data-qa="signup-email"]')
     SIGNUP_BUTTON = lambda page: page.get_by_role("button", name="Signup")
 
-    # -------- Register Page --------
+    # Register Page 
     HEADING = lambda page: page.get_by_role("heading", name="Enter Account Information")
     TITLE_MRS = lambda page: page.get_by_role("radio", name="Mrs.")
     PASSWORD_INPUT = lambda page: page.get_by_label("Password *")
@@ -35,10 +38,25 @@ class AuthLocators:
 
     CREATE_ACCOUNT_BTN = lambda page: page.get_by_role("button", name="Create Account")
 
-    # -------- Success --------
+    # Success
     ACCOUNT_CREATED_TEXT = lambda page: page.get_by_text("Account Created!")
     CONTINUE_BTN = lambda page: page.get_by_role("link", name="Continue")
 
-    # -------- Home --------
+    # Home 
     LOGOUT_LINK = lambda page: page.get_by_role("link", name="Logout")
     DELETE_ACCOUNT_LINK = lambda page: page.get_by_role("link", name="Delete Account")
+
+
+    # -------------------------------------Login locators-------------------------------------
+    LOGIN_TO_HEADING = lambda page: page.get_by_role("heading", name="Login to your account")
+    LOGIN_EMAIL_INPUT =  lambda page: page.locator('[data-qa="login-email"]')
+    LOGIN_PASSWORD_INPUT = lambda page: page.locator('[data-qa="login-password"]')
+    LOGIN_BUTTON = lambda page: page.get_by_role("button", name="Login")
+    
+    # After login
+    LOGGED_IN_AS = lambda page: page.locator("li a", has_text="Logged in as")
+    DELETE_ACCOUNT_LINK = lambda page: page.get_by_role("link", name="Delete Account")
+    ACCOUNT_DELETED_TEXT = lambda page: page.get_by_text("Account Deleted!")
+
+
+

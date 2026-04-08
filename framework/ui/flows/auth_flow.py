@@ -7,6 +7,7 @@ class AuthFlow:
 
     def __init__(self, page):
         self.auth_page = AuthPage(page)
+    # --------------------------------------User Registration Flow-------------------------------------
 
     def register_new_user(self, user_data: dict):
         """
@@ -54,3 +55,23 @@ class AuthFlow:
     
     def logout(self):
         self.auth_page.logout()
+
+    # --------------------------------------User Login Flow-------------------------------------
+    def home_page_visible(self):
+        return self.auth_page.home_page_link()
+    
+    def login_with_credentials(self, email, password):
+        self.auth_page.go_to_signup_login()
+        self.auth_page.enter_login_email(email)
+        self.auth_page.enter_login_password(password)
+        self.auth_page.click_login_button()
+    
+    def verify_logged_in(self):
+        return self.auth_page.logged_in_as_visible()
+    
+    def delete_account_after_login(self):
+        self.auth_page.delete_account_after_login()
+    
+    def verify_account_deleted(self):
+        return self.auth_page.account_deleted_text_visible()
+    
