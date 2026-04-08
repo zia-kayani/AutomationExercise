@@ -117,6 +117,11 @@ class AuthPage:
     def delete_account_link(self):
         return loc.DELETE_ACCOUNT_LINK(self.page)
     
+    #email already exists property
+    @property
+    def email_already_exists_text(self):
+        return loc.EMAIL_ALREADY_EXISTS_TEXT(self.page)
+    
     # -------- Properties for Login --------
 
     @property
@@ -147,6 +152,18 @@ class AuthPage:
     def account_deleted_text(self):
         return loc.ACCOUNT_DELETED_TEXT(self.page)
     
+
+    # login with invalid credentials property
+    @property
+    def incorrect_email_password_text(self):
+        return loc.INCORRECT_EMAIL_PASSWORD_TEXT(self.page)
+    
+    #logout  properties
+    @property
+    def logout_link(self):
+        return loc.LOGOUT_LINK(self.page)
+    
+
     #-------------------------------------Actions-------------------------------------
 
     # --------Common Actions --------
@@ -197,6 +214,10 @@ class AuthPage:
     def delete_account(self):
         self.delete_account_link.click()
 
+    #action for email already exists
+    def email_already_exists_text_visible(self):
+        return self.email_already_exists_text.is_visible()
+
     # -------- Actions for Login --------
     def login_heading_visible(self):
         return self.login_heading.is_visible()
@@ -219,6 +240,14 @@ class AuthPage:
     def account_deleted_text_visible(self):
         return self.account_deleted_text.is_visible()
     
+    # login with invalid credentials action
+    def incorrect_email_password_text_visible(self):
+        return self.incorrect_email_password_text.is_visible()
+    
+    #logout action
+    def click_logout(self):
+        self.logout_link.click()
+
     
 
     

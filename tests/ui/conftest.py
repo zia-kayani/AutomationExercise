@@ -6,6 +6,7 @@ faker = Faker()
 #---- Fixture for user registeration data ----
 name = faker.name()
 email = faker.email()
+password = faker.password(length=10, special_chars=True, digits=True, upper_case=True, lower_case=True)
 first_name = faker.first_name()
 last_name = faker.last_name()
 
@@ -15,7 +16,7 @@ def user_data():
     return {
         "name": f"{name}",
         "email": f"{email}",
-        "password": "Test@123",
+        "password": f"{password}",
 
         "day": "1",
         "month": "1",
@@ -38,5 +39,7 @@ def user_data():
 def registered_user():
     return {
         "email": f"{email}",
-        "password": "Test@123"
+        "password": f"{password}"
     }
+
+
