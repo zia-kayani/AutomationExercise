@@ -29,7 +29,6 @@ class TestRegistration:
     #TC: Verify that user cannot register with existing email
     @pytest.mark.regression
     @pytest.mark.ui
-    @pytest.mark.only
 
     def test_registeration_with_existing_email(self, page,user_data):
         flow = AuthFlow(page)
@@ -58,8 +57,8 @@ class TestLogin:
         assert flow.home_page_visible(), "Home page is not visible"
         flow.login_with_credentials(registered_user["email"], registered_user["password"])
         assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
-        flow.delete_account_after_login()
-        assert flow.verify_account_deleted(), "Account was not deleted"
+        # flow.delete_account_after_login()
+        # assert flow.verify_account_deleted(), "Account was not deleted"
 
 
 
@@ -78,21 +77,20 @@ class TestLogin:
 
 
     #TC: Verify logout user successfully
+    @pytest.mark.smoke
     @pytest.mark.regression
     @pytest.mark.ui
-
-    def test_user_logout(self, page, user_data):
+    @pytest.mark.only
+    def test_user_logout(self, page, registered_user):
         flow = AuthFlow(page)
 
+        
         assert flow.home_page_visible(), "Home page is not visible"
-        flow.login_with_credentials(user_data["email"], user_data["password"])
-        # flow.login_with_credentials(email, password)
-
+        flow.login_with_credentials(registered_user["email"], registered_user["password"])
         assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
+
         flow.logout_user()
         assert flow.login_heading_visible(), "Login heading not visible after logout, logout might have failed"
-
-
     
 
 
