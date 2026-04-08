@@ -9,6 +9,7 @@ class AuthFlow:
         self.auth_page = AuthPage(page)
     # --------------------------------------User Registration Flow-------------------------------------
 
+    # Full end-to-end registration flow
     def register_new_user(self, user_data: dict):
         """
         Full end-to-end registration flow
@@ -56,12 +57,25 @@ class AuthFlow:
     def logout(self):
         self.auth_page.logout()
 
+    # Register user with existing email 
+    def register_with_existing_email(self, user_data):
+        self.auth_page.go_to_signup_login()
+
+        self.auth_page.signup(
+            user_data["name"],
+            user_data["email"]
+        )
+    
+    def verify_email_already_exists_message(self):
+        return self.auth_page.email_already_exists_text_visible()
+
     # --------------------------------------User Login Flow-------------------------------------
     def home_page_visible(self):
         return self.auth_page.home_page_link()
     
     def login_with_credentials(self, email, password):
         self.auth_page.go_to_signup_login()
+        self.auth_page.login_heading_visible()
         self.auth_page.enter_login_email(email)
         self.auth_page.enter_login_password(password)
         self.auth_page.click_login_button()
@@ -74,4 +88,16 @@ class AuthFlow:
     
     def verify_account_deleted(self):
         return self.auth_page.account_deleted_text_visible()
+    
+
+    #login with invalid credentials error message visible
+    def verify_incorrect_email_password_message(self):
+        return self.auth_page.incorrect_email_password_text_visible()
+    
+    #logout user successfully
+    def logout_user(self):
+        self.auth_page.click_logout()
+
+    def login_heading_visible(self):
+        return self.auth_page.login_heading_visible()
     

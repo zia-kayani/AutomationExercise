@@ -46,6 +46,9 @@ class AuthLocators:
     LOGOUT_LINK = lambda page: page.get_by_role("link", name="Logout")
     DELETE_ACCOUNT_LINK = lambda page: page.get_by_role("link", name="Delete Account")
 
+    #email already exists loca
+    EMAIL_ALREADY_EXISTS_TEXT = lambda page: page.get_by_text("Email Address already exist!")
+
 
     # -------------------------------------Login locators-------------------------------------
     LOGIN_TO_HEADING = lambda page: page.get_by_role("heading", name="Login to your account")
@@ -57,6 +60,12 @@ class AuthLocators:
     LOGGED_IN_AS = lambda page: page.locator("li a", has_text="Logged in as")
     DELETE_ACCOUNT_LINK = lambda page: page.get_by_role("link", name="Delete Account")
     ACCOUNT_DELETED_TEXT = lambda page: page.get_by_text("Account Deleted!")
+
+    # login with invalid credentials
+    INCORRECT_EMAIL_PASSWORD_TEXT = lambda page: page.get_by_text("Your email or password is incorrect!")
+
+    #logout link
+    LOGOUT_LINK = lambda page: page.get_by_role("link", name="Logout")
 
 
 

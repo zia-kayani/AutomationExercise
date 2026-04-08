@@ -34,9 +34,3 @@ def user_data():
     }
 
 
-@pytest.fixture
-def registered_user():
-    return {
-        "email": f"{email}",
-        "password": "Test@123"
-    }
