@@ -33,3 +33,10 @@ def user_data():
         "mobile": "03001234567"
     }
 
+
+@pytest.fixture
+def registered_user():
+    return {
+        "email": f"{email}",
+        "password": "Test@123"
+    }
