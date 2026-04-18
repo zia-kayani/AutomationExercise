@@ -16,3 +16,4 @@ class TestCasesFlow:
     def verify_test_cases_page_instructions(self):
         return self.test_cases_page.verify_test_cases_page_instructions()
 
+
