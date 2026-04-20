@@ -4,10 +4,13 @@ from framework.ui.flows.product_flow import ProductFlow
 import pytest
 
 class TestSearchProduct:
+
+    # TC - Verify Search product works fine 
+
     @pytest.mark.regression
     @pytest.mark.smoke
-
-    def test_search_product(self, page, prod="Men Tshirt"):
+    @pytest.mark.parametrize("prod", ["Men Tshirt", "Blue Top", "Dress"])
+    def test_search_product(self, page, prod):
 
         product_flow =  ProductFlow(page)
         search_product_flow =  SearchProductFlow(page)
