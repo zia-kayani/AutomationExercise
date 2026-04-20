@@ -42,4 +42,8 @@ def registered_user():
         "password": f"{password}"
     }
 
+@pytest.fixture
+def user_email():
+    return email
+
 
