@@ -1,4 +1,90 @@
-name: UI Tests in CICD environment 
+# name: UI Tests in CICD environment 
+
+# on:
+#   pull_request:
+#   push:
+#     branches: [ main ]
+#   workflow_dispatch:
+
+# env:
+#   ENV: staging
+#   BASE_URL: ${{secrets.BASE_URL}}
+#   API_BASE_URL: ${{secrets.BASE_URL}}
+
+# jobs:
+#   smoke-tests:
+#     if: github.event_name == 'pull_request'
+#     runs-on: ubuntu-latest
+
+#     env:
+#       ENV: staging
+
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: 3.11
+#       - run: pip install -r requirements.txt
+#       - run: pytest tests/ui -m smoke -v
+
+#   regression-tests:
+#     if: github.event_name == 'push'
+#     runs-on: ubuntu-latest
+
+#     env:
+#       ENV: staging
+
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: 3.11
+
+#       - name: Install dependencies
+#         run: pip install -r requirements.txt
+
+#       #  Install Allure CLI
+#       - name: Install Allure
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y openjdk-11-jre
+#           wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+#           tar -zxvf allure-2.24.0.tgz
+#           sudo mv allure-2.24.0 /opt/allure
+#           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+
+#       #  Run regression tests
+#       - name: Run UI Regression Tests
+#         run: |
+#           pytest tests/ui -m regression --alluredir=reports/allure/ui/ui-results
+
+#       # Generate Allure Report
+#       - name: Generate Allure Report
+#         run: |
+#           allure generate reports/allure/ui/ui-results -o reports/allure/ui/ui-report --clean
+
+#       #  Upload artifact 
+#       - name: Upload Allure Report Artifact
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: ui-allure-report
+#           path: reports/allure/api/api-report
+
+#       #  Deploy to GitHub Pages in the ui folder 
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v4 
+#         with:
+#           github_token: ${{ secrets.GH_PAT}}
+#           publish_dir: reports/allure/ui/ui-report
+#           destination_dir: ui 
+
+
+
+name: UI Tests in CICD environment
 
 on:
   pull_request:
@@ -8,35 +94,16 @@ on:
 
 env:
   ENV: staging
-  BASE_URL: ${{secrets.BASE_URL}}
-  API_BASE_URL: ${{secrets.BASE_URL}}
+  BASE_URL: ${{ secrets.BASE_URL }}
+  API_BASE_URL: ${{ secrets.API_BASE_URL }}
 
 jobs:
   smoke-tests:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
-    env:
-      ENV: staging
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-      - run: pip install -r requirements.txt
-      - run: pytest tests/ui -m smoke -v
-
-  regression-tests:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    env:
-      ENV: staging
-
-
-    steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Python
@@ -47,7 +114,31 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      #  Install Allure CLI
+      # Install Playwright browsers 
+      - name: Install Playwright browsers
+        run: python -m playwright install --with-deps
+
+      - name: Run Smoke Tests
+        run: pytest tests/ui -m smoke -v
+
+
+  regression-tests:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Install Allure CLI
       - name: Install Allure
         run: |
           sudo apt-get update
@@ -57,27 +148,30 @@ jobs:
           sudo mv allure-2.24.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
-      #  Run regression tests
+      # Install Playwright browsers (CRITICAL)
+      - name: Install Playwright browsers
+        run: python -m playwright install --with-deps
+
+      # Run regression tests
       - name: Run UI Regression Tests
-        run: |
-          pytest tests/ui -m regression --alluredir=reports/allure/ui/ui-results
+        run: pytest tests/ui -m regression --alluredir=reports/allure/ui/ui-results
 
       # Generate Allure Report
       - name: Generate Allure Report
         run: |
           allure generate reports/allure/ui/ui-results -o reports/allure/ui/ui-report --clean
 
-      #  Upload artifact 
+      # Upload artifact (FIXED PATH)
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ui-allure-report
-          path: reports/allure/api/api-report
+          path: reports/allure/ui/ui-report
 
-      #  Deploy to GitHub Pages in the ui folder 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4 
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GH_PAT}}
+          github_token: ${{ secrets.GH_PAT }}
           publish_dir: reports/allure/ui/ui-report
-          destination_dir: ui 
+          destination_dir: ui
