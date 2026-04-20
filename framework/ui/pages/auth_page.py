@@ -232,7 +232,7 @@ class AuthPage:
         self.login_button.click()
 
     def logged_in_as_visible(self):
-        return self.logged_in_as.is_visible()
+        return self.logged_in_as.is_visible(timeout=10000)
     
     def delete_account_after_login(self):
         self.delete_account_link_after_login.click()
