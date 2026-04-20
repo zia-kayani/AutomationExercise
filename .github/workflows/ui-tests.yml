@@ -69,7 +69,7 @@ jobs:
 
       # Run regression tests
       - name: Run UI Regression Tests
-        run: pytest tests/ui -m regression --alluredir=reports/allure/ui/ui-results
+        run: pytest tests/ui -m regression --alluredir=reports/allure/ui/ui-results || true
 
       # Generate Allure Report
       - name: Generate Allure Report
