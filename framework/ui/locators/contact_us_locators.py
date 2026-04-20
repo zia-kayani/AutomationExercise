@@ -8,7 +8,5 @@ class ContactUsLocators:
     MESSAGE_TEXTAREA_CONTACT_US = lambda page: page.locator("[data-qa='message']")
     UPLOAD_FILE_INPUT_CONTACT_US = lambda page: page.locator("input[name='upload_file']")
     SUBMIT_BUTTON_CONTACT_US = lambda page: page.locator("[data-qa='submit-button']")
-    SUCCESS_MESSAGE_CONTACT_US = lambda page: page.locator("#contact-page .alert-success")
     
-    HOME_LINK_CONTACT_US = lambda page: page.locator("a.btn.btn-success") 
-
+    HOME_PAGE_LINK = lambda page: page.locator('a[href="/"]', has_text="Home")

@@ -2,7 +2,6 @@ from framework.ui.locators.contact_us_locators import ContactUsLocators as loc
 from pathlib import Path
 from playwright.sync_api import expect
 
-
 class ContactUsPage:
 
     def __init__(self, page):
@@ -44,12 +43,8 @@ class ContactUsPage:
         return loc.SUBMIT_BUTTON_CONTACT_US(self.page)
     
     @property
-    def success_message(self):
-        return loc.SUCCESS_MESSAGE_CONTACT_US(self.page)
-    
-    @property
     def home_link(self):
-        return loc.HOME_LINK_CONTACT_US(self.page)
+        return loc.HOME_PAGE_LINK(self.page)
     
     # -------------------------------Actions-------------------------------------
     def click_contact_us(self):
@@ -66,7 +61,6 @@ class ContactUsPage:
 
 
 
-
     def upload_file(self, filename):
         file_path = Path("test-data") / filename
         if not file_path.exists():
@@ -74,12 +68,9 @@ class ContactUsPage:
         self.upload_file_input.set_input_files(file_path)
 
 
-    def submit_contact_form(self):
+    def click_submit_button(self):
         self.submit_button.click()
-    
-    def verify_success_message(self):
-        expect(self.success_message).to_be_visible()    
         
-    def navigate_to_home(self):
+
+    def click_on_home_page(self):
         self.home_link.click()
-    
