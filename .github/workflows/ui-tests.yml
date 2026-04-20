@@ -74,7 +74,7 @@ jobs:
           name: ui-allure-report
           path: reports/allure/api/api-report
 
-      #  Deploy to GitHub Pages
+      #  Deploy to GitHub Pages in the ui folder 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4 
         with:
