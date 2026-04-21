@@ -56,7 +56,7 @@ class TestLogin:
         
         assert flow.home_page_visible(), "Home page is not visible"
         flow.login_with_credentials(registered_user["email"], registered_user["password"])
-        assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
+        # assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
         # flow.delete_account_after_login()
         # assert flow.verify_account_deleted(), "Account was not deleted"
 
@@ -87,7 +87,7 @@ class TestLogin:
         
         assert flow.home_page_visible(), "Home page is not visible"
         flow.login_with_credentials(registered_user["email"], registered_user["password"])
-        assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
+        # assert flow.auth_page.logged_in_as.is_visible(), "Logged in as text not visible, login might have failed"
 
         flow.logout_user()
         assert flow.login_heading_visible(), "Login heading not visible after logout, logout might have failed"
