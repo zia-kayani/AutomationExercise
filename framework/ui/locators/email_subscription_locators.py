@@ -11,3 +11,6 @@ class EmailSubscriptionLocators:
 
     SUBSCRIBE_SUCCESS_MESSAGE =  lambda page: page.get_by_text("You have been successfully subscribed!")
 
+    #locators for cart page email subscription 
+    CART_PAGE_LINK = lambda page: page.locator('a[href="/view_cart"]:has(i.fa-shopping-cart)')
+
