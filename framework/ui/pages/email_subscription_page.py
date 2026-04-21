@@ -27,7 +27,10 @@ class EmailSubscriptionPage:
     def subscribe_success_message(self):
         return loc.SUBSCRIBE_SUCCESS_MESSAGE(self.page)
     
-
+    #cart page email subscription property
+    @property
+    def cart_page_link(self):
+        return loc.CART_PAGE_LINK(self.page)
 
     # --actions
 
@@ -48,4 +51,9 @@ class EmailSubscriptionPage:
 
     def check_subscribe_success_message(self):
         expect(self.subscribe_success_message).to_be_visible()
+
+
+    #action for cart page 
+    def click_cart_page_link(self):
+        self.cart_page_link.click()
 

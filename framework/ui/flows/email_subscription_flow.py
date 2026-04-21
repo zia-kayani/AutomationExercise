@@ -14,3 +14,6 @@ class EmmailSubscriptionFlow :
         self.email_subscription_page.check_subscribe_success_message()
 
 
+    #cart page method flow
+    def click_on_cart_page(self):
+        self.email_subscription_page.click_cart_page_link()
