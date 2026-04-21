@@ -19,17 +19,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # Faster Python setup with pip cache
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
+          cache: 'pip'
 
+      #  Install dependencies (cached)
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Install Playwright browsers 
+      #  Cache Playwright browsers
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+
+      # Install Playwright browsers (instant if cached)
       - name: Install Playwright browsers
         run: python -m playwright install --with-deps
 
@@ -43,29 +53,46 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # Faster Python setup with pip cache
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
+          cache: 'pip'
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Install Allure CLI
-      - name: Install Allure
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jre
-          wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
-          tar -zxvf allure-2.24.0.tgz
-          sudo mv allure-2.24.0 /opt/allure
-          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+      # Cache Playwright browsers
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
 
-      # Install Playwright browsers (CRITICAL)
       - name: Install Playwright browsers
         run: python -m playwright install --with-deps
+
+      # Cache Allure
+      - name: Cache Allure
+        uses: actions/cache@v4
+        with:
+          path: /opt/allure
+          key: ${{ runner.os }}-allure-2.24.0
+
+      # Install Allure only if not cached
+      - name: Install Allure
+        run: |
+          if [ ! -d "/opt/allure" ]; then
+            sudo apt-get update
+            sudo apt-get install -y openjdk-11-jre
+            wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+            tar -zxvf allure-2.24.0.tgz
+            sudo mv allure-2.24.0 /opt/allure
+            sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+          fi
 
       # Run regression tests
       - name: Run UI Regression Tests
@@ -76,7 +103,7 @@ jobs:
         run: |
           allure generate reports/allure/ui/ui-results -o reports/allure/ui/ui-report --clean
 
-      # Upload artifact (FIXED PATH)
+      # Upload artifact
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
