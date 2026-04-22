@@ -4,6 +4,8 @@ class CartFlow:
     def __init__(self, page):
         self.cart_page =  CartPage(page)
     
+    def click_on_cart_page(self):
+        self.cart_page.click_cart_page_link()
 
     def add_first_product_to_cart(self):
         self.cart_page.add_to_cart_first_product()

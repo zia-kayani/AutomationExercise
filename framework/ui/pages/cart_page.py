@@ -5,7 +5,10 @@ from playwright.sync_api import expect
 class CartPage:
     def __init__(self, page):
         self.page = page
-
+    @property
+    def cart_page_link(self):
+        return loc.CART_PAGE_LINK(self.page)
+    
     @property
     def first_product(self):
         return loc.FIRST_PRODUCT(self.page)
@@ -37,6 +40,10 @@ class CartPage:
     @property
     def product_quantity_in_cart(self):
         return loc.PRODUCT_QUANTITY_IN_CART(self.page)
+
+    #-----Actions ----
+    def click_cart_page_link(self):
+        self.cart_page_link.click()
 
 
     def add_to_cart_first_product(self):
