@@ -20,7 +20,13 @@ class CartFlow:
     def check_first_and_second_product_names(self):
         self.cart_page.check_first_product_name()
         self.cart_page.check_second_product_name()
-        
+
+    
+    def click_add_to_cart_button(self):
+        self.cart_page.click_add_to_cart_button()
+
+    def verify_product_quantity_in_cart(self, quantity):
+        self.cart_page.verify_product_quantity_in_cart(quantity)
      
 
 

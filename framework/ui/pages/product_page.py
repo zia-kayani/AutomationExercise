@@ -51,6 +51,10 @@ class ProductPage:
     def product_brand(self):
         return loc.PRODUCT_BRAND(self.page)  
     
+    @property
+    def product_quantity_input(self):
+        return loc.PRODUCT_QUANTITY_INPUT(self.page)
+    
 
     #----actions ---
 
@@ -86,5 +90,8 @@ class ProductPage:
     def check_product_brand(self):
         expect(self.product_brand).to_be_visible()
 
+    
+    def increase_decrease_product_quantity(self, value:str):
+        self.product_quantity_input.fill(value)
 
 
