@@ -40,6 +40,10 @@ class CartPage:
     @property
     def product_quantity_in_cart(self):
         return loc.PRODUCT_QUANTITY_IN_CART(self.page)
+    
+    @property
+    def remove_product_from_cart(self):
+        return loc.REMOVE_PRODUCT_FROM_CART(self.page)
 
     #-----Actions ----
     def click_cart_page_link(self):
@@ -77,3 +81,6 @@ class CartPage:
 
     def verify_product_quantity_in_cart(self, quantity):
         expect(self.product_quantity_in_cart).to_have_text(quantity)
+
+    def click_to_remove_first_product_from_cart(self):
+        self.remove_product_from_cart.click()

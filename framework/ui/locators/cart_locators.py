@@ -2,7 +2,7 @@
 class CartLocators:
     #cart page Link
     CART_PAGE_LINK = lambda page: page.get_by_role("link", name="Cart")
-    
+
     # product containers
     FIRST_PRODUCT = lambda page: page.locator(".product-image-wrapper").first
     SECOND_PRODUCT = lambda page: page.locator(".product-image-wrapper").nth(1)
@@ -20,5 +20,7 @@ class CartLocators:
     PRODUCT_ADD_TO_CART_BUTTON =  lambda page: page.locator("button.btn.cart:has-text('Add to cart')")
 
     PRODUCT_QUANTITY_IN_CART = lambda page:     page.locator("button.disabled")
+
+    REMOVE_PRODUCT_FROM_CART = lambda page: page.locator("a.cart_quantity_delete[data-product-id='1']")
 
 

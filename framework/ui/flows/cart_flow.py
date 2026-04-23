@@ -29,10 +29,11 @@ class CartFlow:
 
     def verify_product_quantity_in_cart(self, quantity):
         self.cart_page.verify_product_quantity_in_cart(quantity)
+
+    def remove_first_prodcut_from_cart(self):
+        self.cart_page.click_to_remove_first_product_from_cart()
      
 
 
         
-        
-
-        
+    

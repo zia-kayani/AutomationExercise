@@ -44,3 +44,22 @@ class TestCart:
         cart_flow.click_on_view_cart()  
         cart_flow.verify_product_quantity_in_cart("4")  
         
+
+
+    #TC-17  -- Remove product from  cart 
+    @pytest.mark.smoke
+    @pytest.mark.regression
+    @pytest.mark.ui 
+    @pytest.mark.only
+    def test_remove_product_from_cart(self, page):
+        
+        cart_flow = CartFlow(page)
+        auth_flow = AuthFlow(page)
+        product_flow =  ProductFlow(page)
+
+        assert auth_flow.home_page_visible(), "Home Page is not visible "
+        product_flow.go_to_products_page()
+        cart_flow.add_first_product_to_cart()
+        cart_flow.click_on_view_cart()
+
+        cart_flow.remove_first_prodcut_from_cart(), "Product is not removed "
