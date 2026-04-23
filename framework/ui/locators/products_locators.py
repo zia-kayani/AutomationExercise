@@ -15,3 +15,7 @@ class ProductsLocators:
     PRODUCT_AVAILABILITY = lambda page: page.locator(".product-information p:has-text('Availability')")
     PRODUCT_CONDITION = lambda page: page.locator(".product-information p:has-text('Condition')")
     PRODUCT_BRAND  = lambda page: page.locator(".product-information p:has-text('Brand')")
+
+    #Locators for TC - 
+    PRODUCT_QUANTITY_INPUT =  lambda page: page.locator("#quantity")
+

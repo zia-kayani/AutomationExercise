@@ -5,7 +5,10 @@ from playwright.sync_api import expect
 class CartPage:
     def __init__(self, page):
         self.page = page
-
+    @property
+    def cart_page_link(self):
+        return loc.CART_PAGE_LINK(self.page)
+    
     @property
     def first_product(self):
         return loc.FIRST_PRODUCT(self.page)
@@ -29,6 +32,22 @@ class CartPage:
     @property
     def second_product_name(self):
         return loc.SECOND_PRODUCT_NAME(self.page)
+    
+    @property
+    def add_to_cart_product(self):
+        return loc.PRODUCT_ADD_TO_CART_BUTTON(self.page)
+    
+    @property
+    def product_quantity_in_cart(self):
+        return loc.PRODUCT_QUANTITY_IN_CART(self.page)
+    
+    @property
+    def remove_product_from_cart(self):
+        return loc.REMOVE_PRODUCT_FROM_CART(self.page)
+
+    #-----Actions ----
+    def click_cart_page_link(self):
+        self.cart_page_link.click()
 
 
     def add_to_cart_first_product(self):
@@ -56,3 +75,12 @@ class CartPage:
     
     def check_second_product_name(self):
         expect(self.second_product_name).to_be_visible()
+
+    def click_add_to_cart_button(self):
+        self.add_to_cart_product.click()
+
+    def verify_product_quantity_in_cart(self, quantity):
+        expect(self.product_quantity_in_cart).to_have_text(quantity)
+
+    def click_to_remove_first_product_from_cart(self):
+        self.remove_product_from_cart.click()

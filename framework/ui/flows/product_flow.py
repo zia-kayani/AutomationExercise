@@ -37,4 +37,7 @@ class ProductFlow:
     def check_product_brand(self):
         self.product_page.check_product_availability()
 
+    def increase_decrease_product_quantity(self, val:str):
+        self.product_page.increase_decrease_product_quantity(val)
+
         

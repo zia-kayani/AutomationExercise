@@ -4,6 +4,8 @@ class CartFlow:
     def __init__(self, page):
         self.cart_page =  CartPage(page)
     
+    def click_on_cart_page(self):
+        self.cart_page.click_cart_page_link()
 
     def add_first_product_to_cart(self):
         self.cart_page.add_to_cart_first_product()
@@ -20,11 +22,18 @@ class CartFlow:
     def check_first_and_second_product_names(self):
         self.cart_page.check_first_product_name()
         self.cart_page.check_second_product_name()
-        
+
+    
+    def click_add_to_cart_button(self):
+        self.cart_page.click_add_to_cart_button()
+
+    def verify_product_quantity_in_cart(self, quantity):
+        self.cart_page.verify_product_quantity_in_cart(quantity)
+
+    def remove_first_prodcut_from_cart(self):
+        self.cart_page.click_to_remove_first_product_from_cart()
      
 
 
         
-        
-
-        
+    
