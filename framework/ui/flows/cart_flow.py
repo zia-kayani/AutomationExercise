@@ -33,6 +33,8 @@ class CartFlow:
     def remove_first_prodcut_from_cart(self):
         self.cart_page.click_to_remove_first_product_from_cart()
      
+    def check_first_product_in_cart_only(self):
+        self.cart_page.check_first_product_name()
 
 
         
