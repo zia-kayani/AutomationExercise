@@ -82,17 +82,7 @@ jobs:
           path: /opt/allure
           key: ${{ runner.os }}-allure-2.24.0
 
-      # # Install Allure only if not cached
-      # - name: Install Allure
-      #   run: |
-      #     if [ ! -d "/opt/allure" ]; then
-      #       sudo apt-get update
-      #       sudo apt-get install -y openjdk-11-jre
-      #       wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
-      #       tar -zxvf allure-2.24.0.tgz
-      #       sudo mv allure-2.24.0 /opt/allure
-      #       sudo ln -s /opt/allure/bin/allure /usr/bin/allure
-      #     fi
+
       - name: Install Allure CLI
         run: |
           ALLURE_VERSION=2.39.0
