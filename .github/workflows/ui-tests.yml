@@ -95,9 +95,10 @@ jobs:
       #     fi
       - name: Install Allure CLI
         run: |
-          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.24.0.tgz
-          tar -zxvf allure-2.24.0.tgz
-          sudo mv allure-2.24.0 /opt/allure
+          ALLURE_VERSION=2.39.0
+          wget https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -zxvf allure-${ALLURE_VERSION}.tgz
+          sudo mv allure-${ALLURE_VERSION} /opt/allure
           echo "/opt/allure/bin" >> $GITHUB_PATH
 
       # Run regression tests
