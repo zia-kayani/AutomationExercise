@@ -47,3 +47,6 @@ def user_email():
     return email
 
 
+@pytest.fixture
+def address_detail(user_data):
+    return f"{user_data['city']} {user_data['state']} {user_data['zipcode']}"

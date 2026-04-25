@@ -52,3 +52,12 @@ class CheckoutFlow:
         self.checkout_page.click_pay_and_confirm()
 
         self.checkout_page.verify_order_success()
+
+    
+    #verify addresssin checkout
+    def check_address_in_checkout(self, expected_address:str):
+        self.checkout_page.checkout_page_address(expected_address)
+
+    #download invoice button
+    def click_download_invoice(self):
+        self.checkout_page.click_download_invoice_button()
