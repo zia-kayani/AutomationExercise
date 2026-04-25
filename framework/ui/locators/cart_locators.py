@@ -23,4 +23,8 @@ class CartLocators:
 
     REMOVE_PRODUCT_FROM_CART = lambda page: page.locator("a.cart_quantity_delete[data-product-id='1']")
 
+    #Recommended product
+    ADD_TO_CART_RECOMMENDED_PRODCT = lambda page: (page.locator(".recommended_items").locator('a[data-product-id="4"]'))
+    CART_ITEMS_COUNT = lambda page: page.locator("#cart_info_table tbody tr")
+
 

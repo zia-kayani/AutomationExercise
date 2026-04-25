@@ -33,6 +33,15 @@ class CartFlow:
     def remove_first_prodcut_from_cart(self):
         self.cart_page.click_to_remove_first_product_from_cart()
      
+    def check_first_product_in_cart_only(self):
+        self.cart_page.check_first_product_name()
+
+    #Recommended product
+    def add_to_cart_recommended_product(self):
+        self.cart_page.add_to_cart_from_recommended_product()
+
+    def check_at_least_one_product_in_cart(self):
+        self.cart_page.check_at_least_one_product_in_cart()
 
 
         

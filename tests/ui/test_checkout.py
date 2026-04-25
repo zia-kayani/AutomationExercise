@@ -171,4 +171,126 @@ class TestCheckout:
 
         checkout_flow.checkout_page.verify_order_success()
 
+
+
+    #TC-23 -- Verify address details in checkout page (register --> add to cart -->cehckout )
+    @pytest.mark.smoke
+    @pytest.mark.regression
+    @pytest.mark.ui
+    @pytest.mark.parametrize(
+        "comment, name, card, cvc, month, year",
+        [
+            (
+                "Please deliver fast",
+                "Test User",
+                "4111111111111111",
+                "123",
+                "12",
+                "2030"
+            )
+        ]
+    )
+    def test_register_and_login_and_place_order_and_verify_address(self, page,comment,name,card,cvc,month,year, user_data, address_detail
+    ):
+
+        auth_flow = AuthFlow(page)
+        checkout_flow = CheckoutFlow(page)
+        product_flow = ProductFlow(page)
+        cart_flow = CartFlow(page)
+
+        assert auth_flow.home_page_visible(), "Home page is not visible"
+
+        user_data["email"] = f"test_{uuid.uuid4()}@gmail.com" #each time new email will be created 
+
+        auth_flow.register_new_user(user_data)  
+        auth_flow.verify_account_created() , "Account was not created"
+        auth_flow.continue_after_signup()
+        auth_flow.verify_logged_in() , "Account is not logged in "
+
+
+        product_flow.go_to_products_page()
+        product_flow.click_product_view_button()
+        cart_flow.click_add_to_cart_button()
+        cart_flow.click_on_view_cart()  
+
+        checkout_flow.proceed_to_checkout_from_cart()
+
+
+        checkout_flow.verify_address_details()
+        checkout_flow.add_order_comment(comment)
+        ##
+        checkout_flow.check_address_in_checkout(address_detail)
+
+        checkout_flow.proceed_to_place_order()
+
+        checkout_flow.enter_payment_details( name, card, cvc, month, year)
+        checkout_flow.confirm_payment()
+
+        checkout_flow.checkout_page.verify_order_success()
+
+
+
+   #TC-24 -- Download invoice after order placement (register --> add to cart --> cehckout )
+    @pytest.mark.smoke
+    @pytest.mark.regression
+    @pytest.mark.ui
+    @pytest.mark.only
+    @pytest.mark.parametrize(
+        "comment, name, card, cvc, month, year",
+        [
+            (
+                "Please deliver fast",
+                "Test User",
+                "4111111111111111",
+                "123",
+                "12",
+                "2030"
+            )
+        ]
+    )
+    def test_register_and_login_and_place_order_and_download_invoice(self, page,comment,name,card,cvc,month,year, user_data, address_detail
+    ):
+
+        auth_flow = AuthFlow(page)
+        checkout_flow = CheckoutFlow(page)
+        product_flow = ProductFlow(page)
+        cart_flow = CartFlow(page)
+
+        assert auth_flow.home_page_visible(), "Home page is not visible"
+
+        user_data["email"] = f"test_{uuid.uuid4()}@gmail.com" #each time new email will be created 
+
+        auth_flow.register_new_user(user_data)  
+        auth_flow.verify_account_created() , "Account was not created"
+        auth_flow.continue_after_signup()
+        auth_flow.verify_logged_in() , "Account is not logged in "
+
+
+        product_flow.go_to_products_page()
+        product_flow.click_product_view_button()
+        cart_flow.click_add_to_cart_button()
+        cart_flow.click_on_view_cart()  
+
+        checkout_flow.proceed_to_checkout_from_cart()
+
+
+        checkout_flow.verify_address_details()
+        checkout_flow.add_order_comment(comment)
+        
+        checkout_flow.check_address_in_checkout(address_detail)
+
+        checkout_flow.proceed_to_place_order()
+
+        checkout_flow.enter_payment_details( name, card, cvc, month, year)
+        checkout_flow.confirm_payment()
+
+        checkout_flow.checkout_page.verify_order_success()
+
+        checkout_flow.click_download_invoice(), "Invoice not downloaded "
+
+
+
+    
+
+
     

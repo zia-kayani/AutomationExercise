@@ -54,6 +54,14 @@ class CheckoutPage:
     @property
     def order_confirmation_message(self):
         return loc.ORDER_CONFIRMATION_MESSAGE(self.page)
+    
+    @property
+    def checkout_page_address_detail(self):
+        return loc.CHECKPUT_PAGE_ADDRESS(self.page)
+    
+    @property
+    def download_invoice_button(self):
+        return loc.DOWNLOAD_INVOICE_BUTTON_AFTER_DOWNLOAD(self.page)
 
     # ACTIONS
 
@@ -84,3 +92,9 @@ class CheckoutPage:
 
     def verify_order_success(self):
         expect(self.order_confirmation_message).to_be_visible()
+
+    def checkout_page_address(self, expected_address):
+        expect(self.checkout_page_address_detail).to_contain_text(expected_address)
+
+    def click_download_invoice_button(self):
+        self.download_invoice_button.click()

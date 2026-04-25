@@ -50,7 +50,6 @@ class TestCart:
     @pytest.mark.smoke
     @pytest.mark.regression
     @pytest.mark.ui 
-    @pytest.mark.only
     def test_remove_product_from_cart(self, page):
         
         cart_flow = CartFlow(page)
@@ -63,3 +62,24 @@ class TestCart:
         cart_flow.click_on_view_cart()
 
         cart_flow.remove_first_prodcut_from_cart(), "Product is not removed "
+
+    #TC-22  Add to cart from Recommended product
+    @pytest.mark.smoke
+    @pytest.mark.regression
+    @pytest.mark.ui 
+    @pytest.mark.only
+    def test_add_to_cart_recommended_products(self, page):
+        
+        cart_flow = CartFlow(page)
+        auth_flow = AuthFlow(page)
+        product_flow =  ProductFlow(page)
+
+        assert auth_flow.home_page_visible(), "Home Page is not visible "
+        product_flow.recommended_products_heading_check()
+
+        cart_flow.add_to_cart_recommended_product()
+
+        cart_flow.click_on_view_cart()
+
+        cart_flow.check_at_least_one_product_in_cart()
+

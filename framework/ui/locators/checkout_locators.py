@@ -20,3 +20,9 @@ class CheckoutLocators:
     PAY_AND_CONFRIM_BUTTON = lambda page: page.locator("[data-qa='pay-button']")
 
     ORDER_CONFIRMATION_MESSAGE = lambda page: page.get_by_text("Congratulations! Your order has been confirmed!")
+
+    #Verify address deatil in checkout page
+    CHECKPUT_PAGE_ADDRESS = lambda page: page.locator("#address_delivery li.address_city.address_state_name.address_postcode")
+
+    #download invoice button 
+    DOWNLOAD_INVOICE_BUTTON_AFTER_DOWNLOAD = lambda page: page.locator("a.btn.btn-default.check_out")
