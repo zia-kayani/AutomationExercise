@@ -55,8 +55,39 @@ class ProductPage:
     def product_quantity_input(self):
         return loc.PRODUCT_QUANTITY_INPUT(self.page)
     
+    #product review
+    @property
+    def product_review_name_input(self):
+        return loc.PRODUCT_REVIEW_NAME_INPUT(self.page)
+    
+    @property
+    def product_review_email_input(self):
+        return loc.PRODUCT_REVIEW_EMAIL_INPUT(self.page)
 
-    #----actions ---
+    @property
+    def product_review_message_input(self):
+        return loc.PRODUCT_REIVIEW_MESSAGE_INPUT(self.page)
+
+    @property
+    def product_review_submit_button(self):
+        return loc.PRODUCT_REVIEW_SUBMIT_BUTTON(self.page)
+
+    @property
+    def product_review_success_message(self):
+        return loc.PRODUCT_REVIEW_SUCCESS_MESSAGE(self.page)
+    
+    @property
+    def product_review_success_message(self):
+        return loc.PRODUCT_REVIEW_SUCCESS_MESSAGE(self.page)
+    
+    # Recommended product 
+    
+    @property
+    def recommended_products_heading(self):
+        return loc.RECOMENDED_PRODUCTS_HEADING(self.page)
+    
+
+    #----actions ----------------------------------------------------
 
     def click_products_page(self):
         self.products_page_link.click()
@@ -94,4 +125,24 @@ class ProductPage:
     def increase_decrease_product_quantity(self, value:str):
         self.product_quantity_input.fill(value)
 
+    #Product review actions
+    
+    def fill_product_review_name(self, name: str):
+        self.product_review_name_input.fill(name)
 
+    def fill_product_review_email(self, email: str):
+        self.product_review_email_input.fill(email)
+
+    def fill_product_review_message(self, message: str):
+        self.product_review_message_input.fill(message)
+
+    def submit_product_review(self):
+        self.product_review_submit_button.click()
+
+    def check_product_review_success_message(self):
+        expect(self.product_review_success_message).to_be_visible()
+
+    #recommended products
+    def check_recommended_products_heading(self):
+        self.recommended_products_heading.scroll_into_view_if_needed()
+        expect(self.recommended_products_heading).to_be_visible()

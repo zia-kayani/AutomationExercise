@@ -16,6 +16,18 @@ class ProductsLocators:
     PRODUCT_CONDITION = lambda page: page.locator(".product-information p:has-text('Condition')")
     PRODUCT_BRAND  = lambda page: page.locator(".product-information p:has-text('Brand')")
 
-    #Locators for TC - 
+    
     PRODUCT_QUANTITY_INPUT =  lambda page: page.locator("#quantity")
+
+
+    #product reiview 
+    PRODUCT_REVIEW_HEADING = lambda page: page.get_by_text("Write Your Review")
+    PRODUCT_REVIEW_NAME_INPUT = lambda page: page.locator('input[id="name"]')
+    PRODUCT_REVIEW_EMAIL_INPUT = lambda page: page.locator('input[id="email"]')
+    PRODUCT_REIVIEW_MESSAGE_INPUT = lambda page: page.locator('textarea[name="review"]')
+    PRODUCT_REVIEW_SUBMIT_BUTTON =  lambda page: page.locator('#button-review')
+    PRODUCT_REVIEW_SUCCESS_MESSAGE =  lambda page: page.locator('span:has-text("Thank you for your review.")');
+
+    #Recommended products
+    RECOMENDED_PRODUCTS_HEADING =  lambda page: page.get_by_role("heading", name="recommended items")
 

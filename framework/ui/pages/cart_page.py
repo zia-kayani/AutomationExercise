@@ -44,6 +44,15 @@ class CartPage:
     @property
     def remove_product_from_cart(self):
         return loc.REMOVE_PRODUCT_FROM_CART(self.page)
+    
+    #recommended product
+    @property
+    def add_to_cart_recommended_product(self):
+        return loc.ADD_TO_CART_RECOMMENDED_PRODCT(self.page)
+    
+    @property
+    def cart_item_count(self):
+        return loc.CART_ITEMS_COUNT(self.page)
 
     #-----Actions ----
     def click_cart_page_link(self):
@@ -84,3 +93,10 @@ class CartPage:
 
     def click_to_remove_first_product_from_cart(self):
         self.remove_product_from_cart.click()
+
+    #recommended product
+    def add_to_cart_from_recommended_product(self):
+        self.add_to_cart_recommended_product.click()
+
+    def check_at_least_one_product_in_cart(self):
+        expect(self.cart_item_count).not_to_have_count(0)

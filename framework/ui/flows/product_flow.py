@@ -40,4 +40,16 @@ class ProductFlow:
     def increase_decrease_product_quantity(self, val:str):
         self.product_page.increase_decrease_product_quantity(val)
 
+    #product_reivew
+    def submit_product_review_form(self, name: str, email: str, message: str):
+        self.product_page.fill_product_review_name(name)
+        self.product_page.fill_product_review_email(email)
+        self.product_page.fill_product_review_message(message)
+        self.product_page.submit_product_review()
+        self.product_page.check_product_review_success_message()
+
+
+    #recommended product check
+    def recommended_products_heading_check(self):
+        self.product_page.check_recommended_products_heading()
         
