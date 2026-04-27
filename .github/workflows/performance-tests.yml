@@ -5,25 +5,31 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  BASE_URL: ${{ secrets.BASE_URL }}
+
 jobs:
   performance-tests:
     runs-on: ubuntu-latest
 
     steps:
+      # =========================
+      # 1. Checkout Code
+      # =========================
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # -----------------------
-      # Install Java
-      # -----------------------
+      # =========================
+      # 2. Install Java
+      # =========================
       - name: Install Java
         run: |
           sudo apt-get update
           sudo apt-get install -y openjdk-11-jre
 
-      # -----------------------
-      # Install JMeter
-      # -----------------------
+      # =========================
+      # 3. Install JMeter
+      # =========================
       - name: Install JMeter
         run: |
           wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
@@ -31,31 +37,48 @@ jobs:
           sudo mv apache-jmeter-5.6.3 /opt/jmeter
           sudo ln -s /opt/jmeter/bin/jmeter /usr/bin/jmeter
 
-      # -----------------------
-      # Run JMeter Test (HTML Report)
-      # -----------------------
+      # =========================
+      # 4. Create Required Folders (FIX YOUR ERROR)
+      # =========================
+      - name: Prepare Directories
+        run: |
+          mkdir -p performance/jmeter/results
+          mkdir -p performance/jmeter/reports/html
+
+      # =========================
+      # 5. Run JMeter Test
+      # =========================
       - name: Run Performance Test
         run: |
           jmeter -n \
-          -t performance/jmeter/AutomationExercise-test-paln.jmx \
+          -t performance/jmeter/AutomationExercise-test-plan.jmx \
           -l performance/jmeter/results/results.jtl \
-          -e -o performance/jmeter/reports/html/performance-report
+          -e -o performance/jmeter/reports/html
 
-      # -----------------------
-      # Upload Artifact
-      # -----------------------
-      - name: Upload Performance Report
+      # =========================
+      # 6. Upload Raw Results (.jtl)
+      # =========================
+      - name: Upload JMeter Raw Results
         uses: actions/upload-artifact@v4
         with:
-          name: performance-report
-          path: performance/jmeter/reports/html/performance-report
+          name: jmeter-results
+          path: performance/jmeter/results/results.jtl
 
-      # -----------------------
-      # Deploy to GitHub Pages
-      # -----------------------
-      - name: Deploy to GitHub Pages
+      # =========================
+      # 7. Upload HTML Report
+      # =========================
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jmeter-html-report
+          path: performance/jmeter/reports/html
+
+      # =========================
+      # 8. Deploy to GitHub Pages
+      # =========================
+      - name: Deploy Performance Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: performance/jmeter/reports/html/performance-report
+          publish_dir: performance/jmeter/reports/html
           destination_dir: performance
