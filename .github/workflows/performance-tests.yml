@@ -1,0 +1,61 @@
+name: Performance Tests (JMeter)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  performance-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # -----------------------
+      # Install Java
+      # -----------------------
+      - name: Install Java
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre
+
+      # -----------------------
+      # Install JMeter
+      # -----------------------
+      - name: Install JMeter
+        run: |
+          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xvzf apache-jmeter-5.6.3.tgz
+          sudo mv apache-jmeter-5.6.3 /opt/jmeter
+          sudo ln -s /opt/jmeter/bin/jmeter /usr/bin/jmeter
+
+      # -----------------------
+      # Run JMeter Test (HTML Report)
+      # -----------------------
+      - name: Run Performance Test
+        run: |
+          jmeter -n \
+          -t performance/jmeter/AutomationExercise-test-plan.jmx \
+          -l performance/jmeter/results/results.jtl \
+          -e -o performance/jmeter/reports/html/performance-report
+
+      # -----------------------
+      # Upload Artifact
+      # -----------------------
+      - name: Upload Performance Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: performance/jmeter/reports/html/performance-report
+
+      # -----------------------
+      # Deploy to GitHub Pages
+      # -----------------------
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: performance/jmeter/reports/html/performance-report
+          destination_dir: performance
