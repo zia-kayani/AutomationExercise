@@ -53,32 +53,23 @@ jobs:
           jmeter -n \
           -t performance/jmeter/AutomationExercise-test-plan.jmx \
           -l performance/jmeter/results/results.jtl \
-          -e -o performance/jmeter/reports/html
+          -e -o performance/jmeter/reports/html/performance-report
 
-      # =========================
-      # 6. Upload Raw Results (.jtl)
-      # =========================
-      - name: Upload JMeter Raw Results
+      # -----------------------
+      # Upload Artifact
+      # -----------------------
+      - name: Upload Performance Report
         uses: actions/upload-artifact@v4
         with:
-          name: jmeter-results
-          path: performance/jmeter/results/results.jtl
+          name: performance-report
+          path: performance/jmeter/reports/html/performance-report
 
-      # =========================
-      # 7. Upload HTML Report
-      # =========================
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: jmeter-html-report
-          path: performance/jmeter/reports/html
-
-      # =========================
-      # 8. Deploy to GitHub Pages
-      # =========================
-      - name: Deploy Performance Report to GitHub Pages
+      # -----------------------
+      # Deploy to GitHub Pages
+      # -----------------------
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: performance/jmeter/reports/html
+          publish_dir: performance/jmeter/reports/html/performance-report
           destination_dir: performance
